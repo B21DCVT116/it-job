@@ -16,6 +16,7 @@ function CompanyDetail() {
     const fetchApi = async () => {
       const response = await getDetailCompany(params.id);
       setInfoCompany(response);
+      console.log(infoCompany);
     };
     fetchApi();
   }, []);
