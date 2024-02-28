@@ -6,17 +6,17 @@ export const getListCV = async (id) => {
 };
 
 export const getDetailCV = async (id) => {
-  const result = await get(`cv.json/${id}`);
+  const result = await get(`cv/${id-1}.json`);
   return result;
 };
 
 export const changeStatusCV = async (id, options) => {
-  const result = await patch(`cv.json/${id}`, options);
+  const result = await patch(`cv/${id-1}`, options);
   return result;
 };
 
 export const deleteCV = async (id) => {
-  const result = await del(`cv.json/${id}`);
+  const result = await del(`cv/${id-1}`);
   return result;
 };
 

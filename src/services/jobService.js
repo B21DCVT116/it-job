@@ -6,12 +6,12 @@ export const createJob = async (options) => {
 };
 
 export const updateJob = async (id, options) => {
-  const result = await patch(`jobs.json/${id}`, options);
+  const result = await patch(`jobs/${id-1}.json`, options);
   return result;
 };
 
 export const deleteJob = async (id) => {
-  const result = await del(`jobs.json/${id}`);
+  const result = await del(`jobs/${id-1}.json`);
   return result;
 };
 
@@ -21,7 +21,7 @@ export const getListJob = async (id) => {
 };
 
 export const getDetailJob = async (id) => {
-  const result = await get(`jobs.json/${id}`);
+  const result = await get(`jobs/${id-1}.json`);
   return result;
 };
 

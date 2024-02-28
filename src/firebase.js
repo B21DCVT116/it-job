@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import { getDatabase } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -9,6 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyDH5RpFBxXln5hIx3TqtK7jiHpKCOm2mZE",
   authDomain: "it-job-ca2b9.firebaseapp.com",
+  databaseURL: "https://it-job-ca2b9-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "it-job-ca2b9",
   storageBucket: "it-job-ca2b9.appspot.com",
   messagingSenderId: "973604782301",
@@ -19,3 +21,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+export const realtimeDB = getDatabase();
