@@ -28,7 +28,6 @@ function SearchList(props) {
     fetchApi();
   }, []);
 
-  console.log(dataFinal)
 
   return (
     <>

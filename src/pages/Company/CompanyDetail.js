@@ -28,8 +28,6 @@ function CompanyDetail() {
     fetchApi();
   }, []);
 
-  console.log(jobs);
-
   return (
     <>
       <GoBack />

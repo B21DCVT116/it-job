@@ -27,9 +27,6 @@ function CVDetail() {
     fetchApi();
   }, []);
 
-  console.log(cv);
-  console.log(job);
-
   return (
     <>
       <GoBack />

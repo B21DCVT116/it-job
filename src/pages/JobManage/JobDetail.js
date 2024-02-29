@@ -18,7 +18,6 @@ function JobDetail() {
     };
     fetchApi();
   }, []);
-console.log(data);
 
   return (
     <>

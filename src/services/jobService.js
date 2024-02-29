@@ -6,22 +6,22 @@ export const createJob = async (options) => {
 };
 
 export const updateJob = async (id, options) => {
-  const result = await patch(`jobs/${id-1}.json`, options);
+  const result = await patch(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`, options);
   return result;
 };
 
 export const deleteJob = async (id) => {
-  const result = await del(`jobs/${id-1}.json`);
+  const result = await del(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`);
   return result;
 };
 
 export const getListJob = async (id) => {
-  const result = await get(`jobs.json?idCompany=${id}`);
+  const result = await get(`jobs.json?orderBy="idCompany"&equalTo="${id}"&print=pretty`);
   return result;
 };
 
 export const getDetailJob = async (id) => {
-  const result = await get(`jobs/${id-1}.json`);
+  const result = await get(`jobs.json?orderBy="idJob"&equalTo="${id}"&print=pretty`);
   return result;
 };
 

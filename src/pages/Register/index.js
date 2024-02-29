@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { generateToken } from "../../helpers/generateToken";
+import { getTimeCurrent } from "../../helpers/getTime";
 import * as company from "../../services/companyService";
 import { Button, Card, Col, Input, Row, message, Form } from "antd";
 import { rules } from "../../contants";
@@ -10,6 +11,7 @@ function Register() {
 
   const onFinish = async (values) => {
     values.token = generateToken();
+    values.id=getTimeCurrent()+generateToken();
 
     const checkExistEmail = await company.checkExist("email", values.email);
     const checkExistPhone = await company.checkExist("phone", values.phone);

@@ -19,7 +19,6 @@ function JobList(props) {
       setJobs(response.reverse());
     }
   };
-
   useEffect(() => {
     fetchApi();
   }, []);

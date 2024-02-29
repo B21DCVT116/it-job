@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailJob } from "../../services/jobService";
+import { generateToken } from "../../helpers/generateToken";
 import {
   Button,
   Card,
@@ -43,6 +44,7 @@ function JobDetail() {
   const onFinish = async (values) => {
     values.idJob = job.id;
     values.idCompany = job.infoCompany.id;
+    values.id = getTimeCurrent()+generateToken();
     values.createAt = getTimeCurrent();
     const response = await createCV(values);
     if (response) {

@@ -13,7 +13,7 @@ function CompanyList() {
         setData(response);
       }
     };
-    fetchApi();
+    fetchApi(); 
   }, []);
 
   return (

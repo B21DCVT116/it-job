@@ -12,17 +12,22 @@ function Login() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values) => {
-    const data = await company.login(values.email, values.password);
+    const data = await company.login(values.email);
     if (data.length > 0) {
-      const time = 1;
-      setCookie("id", data[0].id, time);
-      setCookie("companyName", data[0].companyName, time);
-      setCookie("email", data[0].email, time);
-      setCookie("token", data[0].token, time);
-      dispatch(checkAuthen(true));
-      navigate("/");
+      if (data[0].password == values.password) {
+        const time = 1;
+        setCookie("id", data[0].id, time);
+        setCookie("companyName", data[0].companyName, time);
+        setCookie("email", data[0].email, time);
+        setCookie("token", data[0].token, time);
+        dispatch(checkAuthen(true));
+        navigate("/");
+      }
+      else{
+        messageApi.error("Mật khẩu không chính xác!");
+      }
     } else {
-      messageApi.error("Tài khoản hoặc mật khẩu không chính xác!");
+      messageApi.error("Tài khoản không tồn tại!");
     }
   };
 
