@@ -21,7 +21,7 @@ export const getListJob = async (id) => {
 };
 
 export const getDetailJob = async (id) => {
-  const result = await get(`jobs.json?orderBy="idJob"&equalTo="${id}"&print=pretty`);
+  const result = await get(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`);
   return result;
 };
 

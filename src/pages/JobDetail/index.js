@@ -31,9 +31,9 @@ function JobDetail() {
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getDetailJob(params.id);
-      const infoCompany = await getDetailCompany(response.idCompany);
+      const infoCompany = await getDetailCompany(response[0].idCompany);
       const dataFinal = {
-        ...response,
+        ...response[0],
         infoCompany: infoCompany,
       };
       setJob(dataFinal);
