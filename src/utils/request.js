@@ -55,3 +55,13 @@ export const patch = async (path, options = {}) => {
   }
   return result;
 };
+
+export const getKey = async (path, options = {}) => {
+  const response = await fetch(API_DOMAIN + path, options);
+  const data = await response.json();
+  const result=[];
+  for (const key in data) {
+    result.push(key);
+  }
+  return result[0];
+};

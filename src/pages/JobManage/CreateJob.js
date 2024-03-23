@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getListTag } from "../../services/tagService";
 import { createJob } from "../../services/jobService";
 import { getTimeCurrent } from "../../helpers/getTime";
+import { generateToken } from "../../helpers/generateToken";
 import { getCookie } from "../../helpers/cookie";
 import { getListCity } from "../../services/cityService";
 const { TextArea } = Input;
@@ -39,6 +40,10 @@ function CreateJob() {
   const handleFinish = async (values) => {
     values.idCompany = idCompany;
     values.createAt = getTimeCurrent();
+    if(values.status !== true || values.status !== false) {
+      values.status = false;
+    }
+    values.id=getTimeCurrent()+generateToken();
     const response = await createJob(values);
     if (response) {
       form.resetFields();
@@ -95,7 +100,7 @@ function CreateJob() {
             </Form.Item>
           </Col>
           <Col span={24}>
-            <Form.Item valuePropName="checked" label="Trạng thái" name="status">
+            <Form.Item valuePropName="checked" label="Trạng thái" name="status" default>
               <Switch checkedChildren="Bật" unCheckedChildren="Tắt" />
             </Form.Item>
           </Col>

@@ -1,4 +1,4 @@
-import { del, get, patch, post } from "../utils/request";
+import { del, get, patch, post, getKey } from "../utils/request";
 
 export const createJob = async (options) => {
   const result = await post(`jobs.json`, options);
@@ -6,12 +6,14 @@ export const createJob = async (options) => {
 };
 
 export const updateJob = async (id, options) => {
-  const result = await patch(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`, options);
+  const key = await getKey(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const result = await patch(`jobs/${key}.json`, options);
   return result;
 };
 
 export const deleteJob = async (id) => {
-  const result = await del(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const key = await getKey(`jobs.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const result = await del(`jobs/${key}.json`);
   return result;
 };
 

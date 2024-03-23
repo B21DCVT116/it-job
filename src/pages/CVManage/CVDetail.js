@@ -8,17 +8,18 @@ import { getDetailJob } from "../../services/jobService";
 
 function CVDetail() {
   const params = useParams();
-  const [cv, setCV] = useState();
-  const [job, setJob] = useState();
+  const [cv, setCV] = useState([]);
+  const [job, setJob] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getDetailCV(params.id);
+      console.log(response);
       if (response) {
-        const responsejob = await getDetailJob(response.idJob);
+        const responsejob = await getDetailJob(response[0].idJob);
         if (responsejob) {
-          setCV(response);
-          setJob(responsejob);
+          setCV(response[0]);
+          setJob(responsejob[0]);
         }
       }
 

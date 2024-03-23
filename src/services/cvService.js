@@ -1,4 +1,4 @@
-import { del, get, patch, post } from "../utils/request";
+import { del, get, patch, post, getKey } from "../utils/request";
 
 export const getListCV = async (id) => {
   const result = await get(`cv.json?orderBy="idCompany"&equalTo="${id}"&print=pretty`);
@@ -11,12 +11,14 @@ export const getDetailCV = async (id) => {
 };
 
 export const changeStatusCV = async (id, options) => {
-  const result = await patch(`cv.json?orderBy="id"&equalTo="${id}"&print=pretty`, options);
+  const key = await getKey(`cv.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const result = await patch(`cv/${key}.json`, options);
   return result;
 };
 
 export const deleteCV = async (id) => {
-  const result = await del(`cv.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const key = await getKey(`cv.json?orderBy="id"&equalTo="${id}"&print=pretty`);
+  const result = await del(`cv/${key}.json`);
   return result;
 };
 

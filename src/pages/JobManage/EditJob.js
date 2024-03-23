@@ -30,7 +30,6 @@ function EditJob(props) {
   const showModal = () => {
     setIsModalOpen(true);
   };
-
   const handleCancel = () => {
     form.resetFields();
     setIsModalOpen(false);
