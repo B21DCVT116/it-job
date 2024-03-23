@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { checkAuthen } from "../../actions/authentication";
 import { Button, Card, Col, Form, Input, Row, message } from "antd";
-import { rules } from "../../contants";
+import { rules, rulesEmail } from "../../contants";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ function Login() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values) => {
-    const data = await company.login(values.email);
+    const data = await company.login(values.email.toLowerCase());
     if (data.length > 0) {
       if (data[0].password == values.password) {
         const time = 1;
@@ -39,7 +39,7 @@ function Login() {
         <Col span={12}>
           <Card title="Đăng nhập">
             <Form onFinish={onFinish} layout="vertical">
-              <Form.Item label="Email" name="email" rules={rules}>
+              <Form.Item label="Email" name="email" rules={rulesEmail}>
                 <Input />
               </Form.Item>
 
