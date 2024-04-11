@@ -31,7 +31,7 @@ function SearchForm() {
 
   return (
     <>
-      <h1>1000+ IT Jobs For Developers</h1>
+      <h1>APPLY AND THE FUTURE IS WAITING FOR YOU</h1>
       {city && (
         <Form onFinish={handleFinish}>
           <Row gutter={[12, 12]}>

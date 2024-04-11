@@ -43,7 +43,7 @@ function JobDetail() {
 
   const onFinish = async (values) => {
     values.idJob = job.id;
-    values.idCompany = job.infoCompany.id;
+    values.idCompany = job.idCompany;
     values.id = getTimeCurrent()+generateToken();
     values.createAt = getTimeCurrent();
     const response = await createCV(values);
@@ -61,8 +61,6 @@ function JobDetail() {
       });
     }
   };
-
-  console.log(job);
 
   return (
     <>
